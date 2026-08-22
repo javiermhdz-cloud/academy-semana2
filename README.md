@@ -1,5 +1,3 @@
-# academy-semana2
-
 # Programa 1: Spring Boot REST API con Spring Data JPA
 
 API REST desarrollada con Spring Boot 3 y Spring Data JPA para la gestión de un catálogo de Pokémon, conectada a una base de datos MySQL en Docker.
@@ -38,5 +36,22 @@ CREATE TABLE IF NOT EXISTS `pokemon` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+```
 
-Ejecución de la AplicaciónPuerto del servidor: 8070Clase Principal: Ejecutar CruddemoApplication.java como Spring Boot App.3. Endpoints RESTVerbo HTTPEndpointDescripciónBody (JSON Ejemplo)GET/api/pokemonsObtiene la lista completa de Pokémon.N/AGET/api/pokemons/{id}Obtiene un Pokémon por su ID.N/APOST/api/pokemonsCrea un nuevo Pokémon.{"pokedexNumber": 150, "name": "Mewtwo", "type": "Psychic", "level": 70}PUT/api/pokemonsActualiza un Pokémon existente.{"id": 1, "pokedexNumber": 25, "name": "Pikachu", "type": "Electric", "level": 100}PATCH/api/pokemons/{id}Actualización parcial de un Pokémon.{"level": 90}DELETE/api/pokemons/{id}Elimina un Pokémon por su ID.N/A
+### Ejecución de la Aplicación
+
+* **Puerto del servidor:** `8070`
+* **Clase Principal:** Ejecutar `CruddemoApplication.java` como *Spring Boot App*.
+
+---
+
+## 3. Endpoints REST
+
+| Verbo HTTP | Endpoint | Descripción | Body (JSON Ejemplo) |
+| --- | --- | --- | --- |
+| **GET** | `/api/pokemons` | Obtiene la lista completa de Pokémon. | N/A |
+| **GET** | `/api/pokemons/{id}` | Obtiene un Pokémon por su ID. | N/A |
+| **POST** | `/api/pokemons` | Crea un nuevo Pokémon. | `{"pokedexNumber": 150, "name": "Mewtwo", "type": "Psychic", "level": 70}` |
+| **PUT** | `/api/pokemons` | Actualiza un Pokémon existente. | `{"id": 1, "pokedexNumber": 25, "name": "Pikachu", "type": "Electric", "level": 100}` |
+| **PATCH** | `/api/pokemons/{id}` | Actualización parcial de un Pokémon. | `{"level": 90}` |
+| **DELETE** | `/api/pokemons/{id}` | Elimina un Pokémon por su ID. | N/A |
