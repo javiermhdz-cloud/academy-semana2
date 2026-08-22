@@ -1,4 +1,4 @@
-# Programa 1: Spring Boot REST API con Spring Data JPA
+# Programa 1: Spring Boot con MySQL
 
 API REST desarrollada con Spring Boot y Spring Data JPA para la gestión de un catálogo de Pokémon. La cual se encuentra conectada a una base de datos MySQL en Docker.
 
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `pokemon` (
 | **PATCH** | `/api/pokemons/{id}` | Actualización parcial de un Pokémon. | `{"level": 90}` |
 | **DELETE** | `/api/pokemons/{id}` | Elimina un Pokémon por su ID. | N/A |
 
-# Programa 2: Spring Boot REST API con Spring Data MongoDB
+# Programa 2: Spring Boot con MongoDB
 
 Proyecto backend desarrollado con Spring Boot y Spring Data MongoDB que expone una interfaz RESTful para la gestión de entidades Pokemon.
 
@@ -111,3 +111,21 @@ Se implementó la entidad **`Pokemon`** mapeada a la colección `pokemons` en Mo
 | **PUT** | `/api/pokemons/{id}` | Actualiza un Pokémon existente por completo. | `{"pokedexNumber": 4, "name": "Charmander", "type": "Fire", "level": 16}` |
 | **PATCH** | `/api/pokemons/{id}` | Actualiza parcialmente un campo (ej. nivel). | `{"level": 16}` |
 | **DELETE** | `/api/pokemons/{id}` | Elimina un Pokémon por su ID. | N/A |
+
+
+# Programa 3: Inyección de Dependencias en Java Puro
+
+## ¿Qué es la Inyección de Dependencias (DI)?
+Es un patrón de diseño donde una clase no crea las instancias de las dependencias que necesita para funcionar (evita usar el operador `new`), sino que las recibe ("se le inyectan") desde un agente o contenedor externo. Esto con la finalidad de crear desacoplamiento. En Spring Boot vemos este mismo concepto automatizado con anotaciones, pero aquí se demuestra con Java puro.
+
+## ¿Qué demuestra el Programa 3 y por qué es Inyección de Dependencias?
+Este programa demuestra la transición entre un código con alto acoplamiento (`Entrenador` y `Blastoise`) y un diseño desacoplado mediante el patrón de Inyección de Dependencias (DI). Es Inyección de Dependencias porque la clase `Entrenador` deja de instanciar sus propias dependencias usando `new`. En su lugar, recibe la interfaz `Pokemon` desde el agente externo `Inyector`. 
+
+## ¿Qué problema resuelve?
+
+1. **Desacoplamiento:** 
+   En la versión "mala" (`com.pokemon.di.sininyeccion`), la clase `Entrenador` está fuertemente acoplada a una implementación concreta (`Blastoise`). Si queremos cambiar de Pokémon, nos vemos obligados a modificar el código fuente de `Entrenador`.
+   Al aplicar DI, la clase `Entrenador` solo conoce la abstracción (`Pokemon`). Podemos cambiar el comportamiento del sistema pasando distintas implementaciones (`Ditto`, `Blastoise`) desde el `Inyector` sin alterar una sola línea de la clase `Entrenador`.
+
+2. **Testeabilidad:**
+   Facilita las pruebas unitarias de software. Si `Entrenador` hiciera peticiones a una base de datos o un servicio externo real, no podríamos probarla de forma aislada, nos vemos obligados a modificar el código fuente de `Entrenador`. Con DI, podemos inyectar un objeto (en este caso una implementación de `Pokemon`) durante las pruebas unitarias para probar la lógica de `Entrenador` en un entorno controlado y sin dependencias externas reales.
