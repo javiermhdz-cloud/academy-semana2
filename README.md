@@ -124,8 +124,8 @@ Este programa demuestra la transición entre un código con alto acoplamiento (`
 ## ¿Qué problema resuelve?
 
 1. **Desacoplamiento:** 
-   En la versión "mala" (`com.pokemon.di.sininyeccion`), la clase `Entrenador` está fuertemente acoplada a una implementación concreta (`Blastoise`). Si queremos cambiar de Pokémon, nos vemos obligados a modificar el código fuente de `Entrenador`.
-   Al aplicar DI, la clase `Entrenador` solo conoce la abstracción (`Pokemon`). Podemos cambiar el comportamiento del sistema pasando distintas implementaciones (`Ditto`, `Blastoise`) desde el `Inyector` sin alterar una sola línea de la clase `Entrenador`.
+   En la versión sin inyección de dependencias (`com.pokemon.di.sininyeccion`), la clase `Entrenador` está fuertemente acoplada a una implementación concreta (`Blastoise`). Si queremos cambiar de Pokémon, nos vemos obligados a modificar el código fuente de `Entrenador`.
+   Al aplicar DI,  `Entrenador` solo conoce la abstracción (`Pokemon`). Lo cual brina la libertad de cambiar el comportamiento del programa pasando distintas implementaciones (`Ditto`, `Blastoise`) desde el `Inyector` sin alterar una sola línea de la clase `Entrenador`.
 
 2. **Testeabilidad:**
-   Facilita las pruebas unitarias de software. Si `Entrenador` hiciera peticiones a una base de datos o un servicio externo real, no podríamos probarla de forma aislada, nos vemos obligados a modificar el código fuente de `Entrenador`. Con DI, podemos inyectar un objeto (en este caso una implementación de `Pokemon`) durante las pruebas unitarias para probar la lógica de `Entrenador` en un entorno controlado y sin dependencias externas reales.
+   Facilita las pruebas unitarias de software. Si `Entrenador` hiciera peticiones a una base de datos o un servicio externo, no podríamos probar la clase de forma aislada. Con DI, podemos inyectar un objeto (en este caso una implementación de prueba de `Pokemon`) durante las pruebas unitarias para evaluar la lógica de `Entrenador` en un entorno controlado y sin dependencias externas.
