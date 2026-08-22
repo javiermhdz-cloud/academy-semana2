@@ -1,6 +1,6 @@
 # Programa 1: Spring Boot REST API con Spring Data JPA
 
-API REST desarrollada con Spring Boot 3 y Spring Data JPA para la gestión de un catálogo de Pokémon, conectada a una base de datos MySQL en Docker.
+API REST desarrollada con Spring Boot y Spring Data JPA para la gestión de un catálogo de Pokémon. La cual se encuentra conectada a una base de datos MySQL en Docker.
 
 ---
 
